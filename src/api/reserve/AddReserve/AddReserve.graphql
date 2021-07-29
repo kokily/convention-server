@@ -1,0 +1,22 @@
+type AddReserveResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddReserve(
+    husbandName: String!
+    husbandNative: String!
+    husbandPhone: String!
+    husbandEmail: String
+    brideName: String!
+    brideNative: String!
+    bridePhone: String!
+    brideEmail: String
+    firstWeddingDate: String!
+    firstWeddingTime: String!
+    secondWeddingDate: String
+    secondWeddingTime: String
+    etcAsk: String
+  ): AddReserveResponse!
+}

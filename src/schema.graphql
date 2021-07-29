@@ -10,6 +10,7 @@ type Mutation {
   AddWeddingEvent(title: String!, body: String!, info: String, thumbnail: String): AddWeddingEventResponse!
   RemoveWeddingEvent(id: ID!): RemoveWeddingEventResponse!
   UpdateWeddingEvent(id: ID!, title: String, body: String, info: String, thumbnail: String): UpdateWeddingEventResponse!
+  AddReserve(husbandName: String!, husbandNative: String!, husbandPhone: String!, husbandEmail: String, brideName: String!, brideNative: String!, bridePhone: String!, brideEmail: String, firstWeddingDate: String!, firstWeddingTime: String!, secondWeddingDate: String, secondWeddingTime: String, etcAsk: String): AddReserveResponse!
   AddTip(title: String!, body: String!): AddTipResponse!
   RemoveTip(id: ID!): RemoveTipResponse!
   UpdateTip(id: ID!, title: String, body: String): UpdateTipResponse!
@@ -70,9 +71,15 @@ type UpdateWeddingEventResponse {
   error: String
 }
 
+type AddReserveResponse {
+  ok: Boolean!
+  error: String
+}
+
 scalar Date
 
 type Admin {
+  id: ID!
   username: String!
   password: String!
   businessName: String
@@ -91,6 +98,7 @@ type Admin {
 }
 
 type Seo {
+  id: ID!
   title: String
   description: String
   keywords: String
@@ -99,6 +107,7 @@ type Seo {
 }
 
 type Tip {
+  id: ID!
   title: String!
   body: String!
   created_at: Date!
@@ -106,12 +115,34 @@ type Tip {
 }
 
 type WeddingEvent {
+  id: ID!
   title: String!
   body: String!
   info: String
   thumbnail: String
   created_at: Date!
   updated_at: Date
+}
+
+type Reserve {
+  id: ID!
+  husbandName: String!
+  husbandNative: String!
+  husbandPhone: String!
+  husbandEmail: String
+  brideName: String!
+  brideNative: String!
+  bridePhone: String!
+  brideEmail: String
+  firstWeddingDate: String!
+  firstWeddingTime: String!
+  secondWeddingDate: String
+  secondWeddingTime: String
+  etcAsk: String
+  isConfirm: Boolean!
+  confirmDate: String
+  confirmTime: String
+  created_at: Date!
 }
 
 type AddTipResponse {

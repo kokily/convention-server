@@ -23,7 +23,7 @@ const _bootStrap = async () => {
         origin:
           process.env.NODE_ENV === 'production'
             ? 'https://mndconvention.co.kr'
-            : 'http://localhost:3000',
+            : '*',
       })
     );
     app.use(bodyParser({ multipart: true }));
@@ -69,7 +69,9 @@ const _bootStrap = async () => {
 
     server.listen(config.port, () => {
       console.log(
-        `> Convention server on https://${config.hostname}:${config.port}`
+        `> Convention server on http${config.ssl ? 's' : ''}://${
+          config.hostname
+        }:${config.port}`
       );
     });
   } catch (err) {
