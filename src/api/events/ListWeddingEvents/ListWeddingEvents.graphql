@@ -1,0 +1,13 @@
+type ListWeddingEventsResponse {
+  ok: Boolean!
+  error: String
+  weddingEvents: [WeddingEvent]
+}
+
+type Query {
+  ListWeddingEvents(
+    cursor: ID
+    title: String
+    body: String
+  ): ListWeddingEventsResponse!
+}

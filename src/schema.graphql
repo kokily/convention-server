@@ -7,6 +7,9 @@ type Mutation {
   CreateAdmin(password: String!): CreateAdminResponse!
   LoginAdmin(password: String!): LoginAdminResponse!
   LogoutAdmin: LogoutAdminResponse!
+  AddWeddingEvent(title: String!, body: String!, info: String, thumbnail: String): AddWeddingEventResponse!
+  RemoveWeddingEvent(id: ID!): RemoveWeddingEventResponse!
+  UpdateWeddingEvent(id: ID!, title: String, body: String, info: String, thumbnail: String): UpdateWeddingEventResponse!
   AddTip(title: String!, body: String!): AddTipResponse!
   RemoveTip(id: ID!): RemoveTipResponse!
   UpdateTip(id: ID!, title: String, body: String): UpdateTipResponse!
@@ -34,8 +37,37 @@ type MeResponse {
 
 type Query {
   Me: MeResponse!
+  ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!
+  ReadWeddingEvent(id: ID!): ReadWeddingEventResponse!
   ListTips(page: Int, title: String): ListTipsResponse!
   ReadTip(id: ID!): ReadTipResponse!
+}
+
+type AddWeddingEventResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ListWeddingEventsResponse {
+  ok: Boolean!
+  error: String
+  weddingEvents: [WeddingEvent]
+}
+
+type ReadWeddingEventResponse {
+  ok: Boolean!
+  error: String
+  weddingEvent: WeddingEvent
+}
+
+type RemoveWeddingEventResponse {
+  ok: Boolean!
+  error: String
+}
+
+type UpdateWeddingEventResponse {
+  ok: Boolean!
+  error: String
 }
 
 scalar Date
@@ -76,7 +108,7 @@ type Tip {
 type WeddingEvent {
   title: String!
   body: String!
-  info: String!
+  info: String
   thumbnail: String
   created_at: Date!
   updated_at: Date

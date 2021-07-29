@@ -36,7 +36,7 @@ type Tip {
 type WeddingEvent {
   title: String!
   body: String!
-  info: String!
+  info: String
   thumbnail: String
   created_at: Date!
   updated_at: Date

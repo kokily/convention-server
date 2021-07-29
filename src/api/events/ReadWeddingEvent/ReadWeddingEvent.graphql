@@ -1,0 +1,11 @@
+type ReadWeddingEventResponse {
+  ok: Boolean!
+  error: String
+  weddingEvent: WeddingEvent
+}
+
+type Query {
+  ReadWeddingEvent(
+    id: ID!
+  ): ReadWeddingEventResponse!
+}

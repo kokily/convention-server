@@ -18,8 +18,8 @@ export class WeddingEvent extends BaseEntity {
   @Column({ type: 'text' })
   body!: string;
 
-  @Column({ type: 'text' })
-  info!: string;
+  @Column({ type: 'text', nullable: true })
+  info!: string | null;
 
   @Column({ type: 'text', nullable: true })
   thumbnail!: string | null;

@@ -1,0 +1,10 @@
+type RemoveWeddingEventResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RemoveWeddingEvent(
+    id: ID!
+  ): RemoveWeddingEventResponse!
+}

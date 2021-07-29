@@ -1,0 +1,13 @@
+type AddWeddingEventResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddWeddingEvent(
+    title: String!
+    body: String!
+    info: String
+    thumbnail: String
+  ): AddWeddingEventResponse!
+}

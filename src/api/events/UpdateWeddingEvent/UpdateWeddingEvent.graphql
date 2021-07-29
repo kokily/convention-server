@@ -1,0 +1,14 @@
+type UpdateWeddingEventResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  UpdateWeddingEvent(
+    id: ID!
+    title: String
+    body: String
+    info: String
+    thumbnail: String
+  ): UpdateWeddingEventResponse!
+}
