@@ -1,0 +1,10 @@
+type LoginAdminResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  LoginAdmin(
+    password: String!
+  ): LoginAdminResponse!
+}

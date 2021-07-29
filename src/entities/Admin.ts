@@ -6,6 +6,9 @@ export class Admin extends BaseEntity {
   id!: string;
 
   @Column({ type: 'text' })
+  username!: string;
+
+  @Column({ type: 'text' })
   password!: string;
 
   @Column({ type: 'text', nullable: true })

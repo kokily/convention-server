@@ -24,6 +24,7 @@ const resolvers: Resolvers = {
 
         const newPassword = await bcrypt.hash(password, 10);
         const admin = await getRepository(Admin).create({
+          username: 'admin',
           password: newPassword,
         });
 

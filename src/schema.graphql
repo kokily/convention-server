@@ -5,9 +5,16 @@ type CreateAdminResponse {
 
 type Mutation {
   CreateAdmin(password: String!): CreateAdminResponse!
+  LoginAdmin(password: String!): LoginAdminResponse!
+}
+
+type LoginAdminResponse {
+  ok: Boolean!
+  error: String
 }
 
 type Admin {
+  username: String!
   password: String!
   businessName: String
   businessNumber: String

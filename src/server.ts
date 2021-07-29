@@ -1,15 +1,50 @@
 import 'dotenv/config';
+import { ApolloServer } from 'apollo-server-koa';
+import Koa, { Context } from 'koa';
+import Router from 'koa-router';
+import cors from '@koa/cors';
+import bodyParser from 'koa-body';
 import https from 'https';
 import http from 'http';
 import fs from 'fs';
-import { Next } from 'koa';
 import { createConnection } from 'typeorm';
 import ConnectionOptions from './libs/config';
-import app from './app';
+import schema from './libs/schema';
 
 const _bootStrap = async () => {
   try {
     await createConnection(ConnectionOptions);
+
+    const app = new Koa();
+    const router = new Router();
+
+    app.use(
+      cors({
+        origin:
+          process.env.NODE_ENV === 'production'
+            ? 'https://mndconvention.co.kr'
+            : 'http://localhost:3000',
+      })
+    );
+    app.use(bodyParser({ multipart: true }));
+    app.use(router.routes());
+    app.use(router.allowedMethods());
+
+    const apollo = new ApolloServer({
+      schema,
+      context: ({ ctx }: { ctx: Context }) => {
+        return {
+          ctx,
+        };
+      },
+    });
+
+    await apollo.start();
+
+    router.get('/graphql', apollo.getMiddleware());
+    router.post('/graphql', apollo.getMiddleware());
+
+    apollo.applyMiddleware({ app, cors: false });
 
     const configurations = {
       production: { ssl: true, port: 443, hostname: 'mndconvention.co.kr' },
@@ -18,34 +53,25 @@ const _bootStrap = async () => {
     const environment = process.env.NODE_ENV || 'production';
     const config = configurations[environment];
 
-    let httpServer;
-    let httpsServer;
+    let server;
 
     if (config.ssl) {
-      httpServer = http.createServer(app.callback());
-      httpsServer = https.createServer(
+      server = https.createServer(
         {
           key: fs.readFileSync(`${process.env.SSL_KEY}`),
           cert: fs.readFileSync(`${process.env.SSL_CERT}`),
         },
         app.callback()
       );
-
-      httpServer.listen(80);
-      httpsServer.listen(config.port, () => {
-        console.log(
-          `> Convention server on https://${config.hostname}:${config.port}`
-        );
-      });
     } else {
-      httpServer = http.createServer(app.callback());
-
-      httpServer.listen(config.port, () => {
-        console.log(
-          `> Convention dev server on http://${config.hostname}:${config.port}`
-        );
-      });
+      server = http.createServer(app.callback());
     }
+
+    server.listen(config.port, () => {
+      console.log(
+        `> Convention server on https://${config.hostname}:${config.port}`
+      );
+    });
   } catch (err) {
     console.error(err);
   }
