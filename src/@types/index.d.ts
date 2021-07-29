@@ -1,4 +1,4 @@
-export const typeDefs = ["type CreateAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateAdmin(password: String!): CreateAdminResponse!\n  LoginAdmin(password: String!): LoginAdminResponse!\n}\n\ntype LoginAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Admin {\n  username: String!\n  password: String!\n  businessName: String\n  businessNumber: String\n  leader: String\n  email: String\n  privacyNeed: String\n  address: String\n  telephone: String\n  fax: String\n  facebook: String\n  instagram: String\n  youtube: String\n  twitter: String\n  blog: String\n}\n\ntype Query {\n  hello: String\n}\n"];
+export const typeDefs = ["type CreateAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateAdmin(password: String!): CreateAdminResponse!\n  LoginAdmin(password: String!): LoginAdminResponse!\n  LogoutAdmin: LogoutAdminResponse!\n}\n\ntype LoginAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype LogoutAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Admin {\n  username: String!\n  password: String!\n  businessName: String\n  businessNumber: String\n  leader: String\n  email: String\n  privacyNeed: String\n  address: String\n  telephone: String\n  fax: String\n  facebook: String\n  instagram: String\n  youtube: String\n  twitter: String\n  blog: String\n}\n\ntype Query {\n  hello: String\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -8,6 +8,7 @@ export interface Query {
 export interface Mutation {
   CreateAdmin: CreateAdminResponse;
   LoginAdmin: LoginAdminResponse;
+  LogoutAdmin: LogoutAdminResponse;
 }
 
 export interface CreateAdminMutationArgs {
@@ -24,6 +25,11 @@ export interface CreateAdminResponse {
 }
 
 export interface LoginAdminResponse {
+  ok: boolean;
+  error: string | null;
+}
+
+export interface LogoutAdminResponse {
   ok: boolean;
   error: string | null;
 }

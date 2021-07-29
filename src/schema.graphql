@@ -6,9 +6,15 @@ type CreateAdminResponse {
 type Mutation {
   CreateAdmin(password: String!): CreateAdminResponse!
   LoginAdmin(password: String!): LoginAdminResponse!
+  LogoutAdmin: LogoutAdminResponse!
 }
 
 type LoginAdminResponse {
+  ok: Boolean!
+  error: String
+}
+
+type LogoutAdminResponse {
   ok: Boolean!
   error: String
 }
