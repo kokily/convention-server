@@ -7,6 +7,9 @@ type Mutation {
   CreateAdmin(password: String!): CreateAdminResponse!
   LoginAdmin(password: String!): LoginAdminResponse!
   LogoutAdmin: LogoutAdminResponse!
+  AddTip(title: String!, body: String!): AddTipResponse!
+  RemoveTip(id: ID!): RemoveTipResponse!
+  UpdateTip(id: ID!, title: String, body: String): UpdateTipResponse!
 }
 
 type LoginAdminResponse {
@@ -31,8 +34,11 @@ type MeResponse {
 
 type Query {
   Me: MeResponse!
-  hello: String
+  ListTips(page: Int, title: String): ListTipsResponse!
+  ReadTip(id: ID!): ReadTipResponse!
 }
+
+scalar Date
 
 type Admin {
   username: String!
@@ -50,4 +56,56 @@ type Admin {
   youtube: String
   twitter: String
   blog: String
+}
+
+type Seo {
+  title: String
+  description: String
+  keywords: String
+  headTag: String
+  bodyTag: String
+}
+
+type Tip {
+  title: String!
+  body: String!
+  created_at: Date!
+  updated_at: Date
+}
+
+type WeddingEvent {
+  title: String!
+  body: String!
+  info: String!
+  thumbnail: String
+  created_at: Date!
+  updated_at: Date
+}
+
+type AddTipResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ListTipsResponse {
+  ok: Boolean!
+  error: String
+  tips: [Tip]
+  lastPage: Int!
+}
+
+type ReadTipResponse {
+  ok: Boolean!
+  error: String
+  tip: Tip
+}
+
+type RemoveTipResponse {
+  ok: Boolean!
+  error: String
+}
+
+type UpdateTipResponse {
+  ok: Boolean!
+  error: String
 }

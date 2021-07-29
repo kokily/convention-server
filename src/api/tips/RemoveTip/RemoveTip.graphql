@@ -1,0 +1,10 @@
+type RemoveTipResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RemoveTip(
+    id: ID!
+  ): RemoveTipResponse!
+}

@@ -24,7 +24,7 @@
   "homepage": "https://github.com/kokily/convention-server#readme",
   "dependencies": {
     "@koa/cors": "3.1.0",
-    "apollo-server-koa": "2.25.1",
+    "apollo-server-koa": "3.1.1",
     "bcryptjs": "2.4.3",
     "dotenv": "10.0.0",
     "gql-merge": "0.0.6",

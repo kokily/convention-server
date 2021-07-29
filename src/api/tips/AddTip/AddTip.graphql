@@ -1,0 +1,11 @@
+type AddTipResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddTip(
+    title: String!
+    body: String!
+  ): AddTipResponse!
+}

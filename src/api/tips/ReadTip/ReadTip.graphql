@@ -1,0 +1,11 @@
+type ReadTipResponse {
+  ok: Boolean!
+  error: String
+  tip: Tip
+}
+
+type Query {
+  ReadTip(
+    id: ID!
+  ): ReadTipResponse!
+}

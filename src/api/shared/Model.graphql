@@ -1,3 +1,5 @@
+scalar Date
+
 type Admin {
   username: String!
   password: String!
@@ -16,6 +18,26 @@ type Admin {
   blog: String
 }
 
-type Query {
-  hello: String
+type Seo {
+  title: String
+  description: String
+  keywords: String
+  headTag: String
+  bodyTag: String
+}
+
+type Tip {
+  title: String!
+  body: String!
+  created_at: Date!
+  updated_at: Date
+}
+
+type WeddingEvent {
+  title: String!
+  body: String!
+  info: String!
+  thumbnail: String
+  created_at: Date!
+  updated_at: Date
 }

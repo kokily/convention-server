@@ -1,0 +1,13 @@
+type ListTipsResponse {
+  ok: Boolean!
+  error: String
+  tips: [Tip]
+  lastPage: Int!
+}
+
+type Query {
+  ListTips(
+    page: Int
+    title: String
+  ): ListTipsResponse!
+}

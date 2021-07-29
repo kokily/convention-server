@@ -1,0 +1,12 @@
+type UpdateTipResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  UpdateTip(
+    id: ID!
+    title: String
+    body: String
+  ): UpdateTipResponse!
+}
