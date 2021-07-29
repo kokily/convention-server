@@ -39,6 +39,8 @@ const authResolver =
       const message =
         err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message;
 
+      console.log(message);
+
       if (message === 'jwt expired') {
         const token = ctx.cookies.get('refreshToken');
 

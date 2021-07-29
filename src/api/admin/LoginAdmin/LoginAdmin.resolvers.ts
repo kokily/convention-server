@@ -4,6 +4,11 @@ import bcrypt from 'bcryptjs';
 import { LoginAdminMutationArgs, LoginAdminResponse } from '../../../@types';
 import { Resolvers } from '../../../@types/resolvers';
 import { Admin } from '../../../entities/Admin';
+import {
+  createAccessToken,
+  createRefreshToken,
+  setCookie,
+} from '../../../libs/token';
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -32,6 +37,11 @@ const resolvers: Resolvers = {
             error: '비밀번호가 올바르지 않습니다.',
           };
         }
+
+        const accessToken = createAccessToken(admin);
+        const refreshToken = createRefreshToken(admin);
+
+        setCookie(ctx, accessToken, refreshToken);
 
         return {
           ok: true,

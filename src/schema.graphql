@@ -19,6 +19,21 @@ type LogoutAdminResponse {
   error: String
 }
 
+type Me {
+  adminId: String
+}
+
+type MeResponse {
+  ok: Boolean!
+  error: String
+  me: Me
+}
+
+type Query {
+  Me: MeResponse!
+  hello: String
+}
+
 type Admin {
   username: String!
   password: String!
@@ -35,8 +50,4 @@ type Admin {
   youtube: String
   twitter: String
   blog: String
-}
-
-type Query {
-  hello: String
 }
