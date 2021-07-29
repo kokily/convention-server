@@ -1,0 +1,20 @@
+type Admin {
+  password: String!
+  businessName: String
+  businessNumber: String
+  leader: String
+  email: String
+  privacyNeed: String
+  address: String
+  telephone: String
+  fax: String
+  facebook: String
+  instagram: String
+  youtube: String
+  twitter: String
+  blog: String
+}
+
+type Query {
+  hello: String
+}

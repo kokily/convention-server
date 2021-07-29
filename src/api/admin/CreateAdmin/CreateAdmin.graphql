@@ -1,0 +1,10 @@
+type CreateAdminResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  CreateAdmin(
+    password: String!
+  ): CreateAdminResponse!
+}
