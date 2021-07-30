@@ -1,0 +1,12 @@
+type ConfirmReserveResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  ConfirmReserve(
+    id: ID!
+    confirmDate: String!
+    confirmTime: String!
+  ): ConfirmReserveResponse!
+}
