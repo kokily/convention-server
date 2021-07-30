@@ -26,6 +26,7 @@ const resolvers: Resolvers = {
           return {
             ok: false,
             error: '관리자가 존재하지 않습니다.',
+            token: null,
           };
         }
 
@@ -35,6 +36,7 @@ const resolvers: Resolvers = {
           return {
             ok: false,
             error: '비밀번호가 올바르지 않습니다.',
+            token: null,
           };
         }
 
@@ -46,11 +48,13 @@ const resolvers: Resolvers = {
         return {
           ok: true,
           error: null,
+          token: accessToken,
         };
       } catch (err) {
         return {
           ok: false,
           error: err.message,
+          token: null,
         };
       }
     },

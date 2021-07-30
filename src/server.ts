@@ -23,7 +23,8 @@ const _bootStrap = async () => {
         origin:
           process.env.NODE_ENV === 'production'
             ? 'https://mndconvention.co.kr'
-            : '*',
+            : 'http://localhost:4000',
+        credentials: true,
       })
     );
     app.use(bodyParser({ multipart: true }));
@@ -39,12 +40,10 @@ const _bootStrap = async () => {
       },
     });
 
-    await apollo.start();
-
     router.get('/graphql', apollo.getMiddleware());
     router.post('/graphql', apollo.getMiddleware());
 
-    apollo.applyMiddleware({ app, cors: false });
+    apollo.applyMiddleware({ app, cors: true });
 
     const configurations = {
       production: { ssl: true, port: 443, hostname: 'mndconvention.co.kr' },

@@ -1,0 +1,11 @@
+type ReadReserveResponse {
+  ok: Boolean!
+  error: String
+  reserve: Reserve
+}
+
+type Query {
+  ReadReserve(
+    id: ID!
+  ): ReadReserveResponse!
+}

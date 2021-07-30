@@ -9,8 +9,8 @@ const ConnectionOptions: ConnectionOptions = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   entities,
-  synchronize: false,
-  logging: false,
+  synchronize: true,
+  logging: true,
 };
 
 export default ConnectionOptions;

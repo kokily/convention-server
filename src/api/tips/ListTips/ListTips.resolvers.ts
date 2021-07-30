@@ -12,7 +12,7 @@ const resolvers: Resolvers = {
         const query = await getManager()
           .createQueryBuilder(Tip, 'tips')
           .limit(10)
-          .skip((page ? page - 1 : 1) * 10)
+          .skip((page ? page - 1 : 0) * 10)
           .orderBy('tips.created_at', 'DESC')
           .addOrderBy('tips.id', 'DESC');
 

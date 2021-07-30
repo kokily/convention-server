@@ -19,6 +19,7 @@ type Mutation {
 type LoginAdminResponse {
   ok: Boolean!
   error: String
+  token: String
 }
 
 type LogoutAdminResponse {
@@ -40,6 +41,8 @@ type Query {
   Me: MeResponse!
   ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!
   ReadWeddingEvent(id: ID!): ReadWeddingEventResponse!
+  ListReserves(page: Int, confirm: Boolean, name: String, phone: String, email: String): ListReservesResponse!
+  ReadReserve(id: ID!): ReadReserveResponse!
   ListTips(page: Int, title: String): ListTipsResponse!
   ReadTip(id: ID!): ReadTipResponse!
 }
@@ -74,6 +77,19 @@ type UpdateWeddingEventResponse {
 type AddReserveResponse {
   ok: Boolean!
   error: String
+}
+
+type ListReservesResponse {
+  ok: Boolean!
+  error: String
+  reserves: [Reserve]
+  lastPage: Int!
+}
+
+type ReadReserveResponse {
+  ok: Boolean!
+  error: String
+  reserve: Reserve
 }
 
 scalar Date

@@ -1,6 +1,7 @@
 type LoginAdminResponse {
   ok: Boolean!
   error: String
+  token: String
 }
 
 type Mutation {

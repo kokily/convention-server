@@ -1,0 +1,16 @@
+type ListReservesResponse {
+  ok: Boolean!
+  error: String
+  reserves: [Reserve]
+  lastPage: Int!
+}
+
+type Query {
+  ListReserves(
+    page: Int
+    confirm: Boolean
+    name: String
+    phone: String
+    email: String
+  ): ListReservesResponse!
+}
