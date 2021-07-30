@@ -8,6 +8,7 @@ type Mutation {
   LoginAdmin(password: String!): LoginAdminResponse!
   LogoutAdmin: LogoutAdminResponse!
   AddAsk(native: String!, name: String!, phone: String!, email: String!, reserveDate: String!, reserveTime: String!, num: Int!, body: String!): AddAskResponse!
+  RemoveAsk(id: ID!): RemoveAskResponse!
   AddBanquet(title: String!, startTime: String!, endTime: String!, num: Int!, eventDate: String!): AddBanquetResponse!
   RemoveBanquet(id: ID!): RemoveBanquetResponse!
   UpdateBanquet(id: ID!, title: String, startTime: String, endTime: String, num: String, eventDate: String): UpdateBanquetResponse!
@@ -47,6 +48,7 @@ type MeResponse {
 type Query {
   Me: MeResponse!
   ListAsks(page: Int, name: String): ListAsksResponse!
+  ReadAsk(id: ID!): ReadAskResponse!
   ListBanquet(date: String!): ListBanquetResponse!
   ReadBanquet(id: ID!): ReadBanquetResponse!
   ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!
@@ -67,6 +69,17 @@ type ListAsksResponse {
   error: String
   asks: [Ask]
   lastPage: Int!
+}
+
+type ReadAskResponse {
+  ok: Boolean!
+  error: String
+  ask: Ask
+}
+
+type RemoveAskResponse {
+  ok: Boolean!
+  error: String
 }
 
 type AddBanquetResponse {
