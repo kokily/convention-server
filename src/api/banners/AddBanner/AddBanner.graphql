@@ -1,0 +1,13 @@
+type AddBannerResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddBanner(
+    title: String!
+    order: Int!
+    isUse: Boolean!
+    image: String!
+  ): AddBannerResponse!
+}

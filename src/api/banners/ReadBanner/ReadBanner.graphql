@@ -1,0 +1,11 @@
+type ReadBannerResponse {
+  ok: Boolean!
+  error: String
+  banner: Banner
+}
+
+type Query {
+  ReadBanner(
+    id: ID!
+  ): ReadBannerResponse!
+}

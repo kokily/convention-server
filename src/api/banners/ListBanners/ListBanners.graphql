@@ -1,0 +1,11 @@
+type ListBannersResponse {
+  ok: Boolean!
+  error: String
+  banners: [Banner]
+}
+
+type Query {
+  ListBanners(
+    cursor: ID
+  ): ListBannersResponse!
+}

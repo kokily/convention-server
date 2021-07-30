@@ -1,0 +1,10 @@
+type RemoveBannerResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RemoveBanner(
+    id: ID!
+  ): RemoveBannerResponse!
+}

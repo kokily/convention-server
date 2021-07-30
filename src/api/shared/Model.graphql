@@ -150,3 +150,12 @@ type Result {
   facility: Point!
   reuse: SubPoint!
 }
+
+type Banner {
+  id: ID!
+  title: String!
+  order: Int!
+  isUse: Boolean!
+  image: String!
+  created_at: Date!
+}

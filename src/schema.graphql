@@ -9,6 +9,9 @@ type Mutation {
   LogoutAdmin: LogoutAdminResponse!
   AddAsk(native: String!, name: String!, phone: String!, email: String!, reserveDate: String!, reserveTime: String!, num: Int!, body: String!): AddAskResponse!
   RemoveAsk(id: ID!): RemoveAskResponse!
+  AddBanner(title: String!, order: Int!, isUse: Boolean!, image: String!): AddBannerResponse!
+  RemoveBanner(id: ID!): RemoveBannerResponse!
+  UpdateBanner(id: ID!, title: String, order: Int, isUse: Boolean, image: String): UpdateBannerResponse!
   AddBanquet(title: String!, startTime: String!, endTime: String!, num: Int!, eventDate: String!): AddBanquetResponse!
   RemoveBanquet(id: ID!): RemoveBanquetResponse!
   UpdateBanquet(id: ID!, title: String, startTime: String, endTime: String, num: String, eventDate: String): UpdateBanquetResponse!
@@ -51,6 +54,8 @@ type Query {
   Me: MeResponse!
   ListAsks(page: Int, name: String): ListAsksResponse!
   ReadAsk(id: ID!): ReadAskResponse!
+  ListBanners(cursor: ID): ListBannersResponse!
+  ReadBanner(id: ID!): ReadBannerResponse!
   ListBanquet(date: String!): ListBanquetResponse!
   ReadBanquet(id: ID!): ReadBanquetResponse!
   ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!
@@ -83,6 +88,33 @@ type ReadAskResponse {
 }
 
 type RemoveAskResponse {
+  ok: Boolean!
+  error: String
+}
+
+type AddBannerResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ListBannersResponse {
+  ok: Boolean!
+  error: String
+  banners: [Banner]
+}
+
+type ReadBannerResponse {
+  ok: Boolean!
+  error: String
+  banner: Banner
+}
+
+type RemoveBannerResponse {
+  ok: Boolean!
+  error: String
+}
+
+type UpdateBannerResponse {
   ok: Boolean!
   error: String
 }
@@ -325,6 +357,15 @@ type Result {
   mealsPoint: Point!
   facility: Point!
   reuse: SubPoint!
+}
+
+type Banner {
+  id: ID!
+  title: String!
+  order: Int!
+  isUse: Boolean!
+  image: String!
+  created_at: Date!
 }
 
 type AddSurveyResponse {
