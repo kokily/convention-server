@@ -1,0 +1,12 @@
+type ListSurveyResponse {
+  ok: Boolean!
+  error: String
+  survey: [Survey]
+  lastPage: Int!
+}
+
+type Query {
+  ListSurvey(
+    page: Int    
+  ): ListSurveyResponse!
+}

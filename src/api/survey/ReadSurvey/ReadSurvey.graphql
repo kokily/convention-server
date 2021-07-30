@@ -1,0 +1,11 @@
+type ReadSurveyResponse {
+  ok: Boolean!
+  error: String
+  survey: Survey
+}
+
+type Query {
+  ReadSurvey(
+    id: ID!
+  ): ReadSurveyResponse!
+}

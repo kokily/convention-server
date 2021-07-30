@@ -68,7 +68,7 @@ type Reserve {
 }
 
 type Banquet {
-  id: String!
+  id: ID!
   title: String!
   startTime: String!
   endTime: String!
@@ -78,7 +78,7 @@ type Banquet {
 }
 
 type Ask {
-  id: String!
+  id: ID!
   native: String!
   name: String!
   phone: String!
@@ -87,5 +87,17 @@ type Ask {
   reserveTime: String!
   num: Int!
   body: String!
+  created_at: Date!
+}
+
+type Survey {
+  id: ID!
+  belong: String!
+  purpose: [String]!
+  servicePoint: Int!
+  mealsPoint: Int!
+  facility: Int!
+  reuse: Int!
+  etc: String!
   created_at: Date!
 }

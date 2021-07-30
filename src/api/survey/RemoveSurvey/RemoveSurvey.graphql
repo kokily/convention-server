@@ -1,0 +1,10 @@
+type RemoveSurveyResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RemoveSurvey(
+    id: ID!
+  ): RemoveSurveyResponse!
+}

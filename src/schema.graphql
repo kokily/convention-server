@@ -19,6 +19,8 @@ type Mutation {
   CancelReserve(id: ID!): CancelReserveResponse!
   ConfirmReserve(id: ID!, confirmDate: String!, confirmTime: String!): ConfirmReserveResponse!
   RemoveReserve(id: ID!): RemoveReserveResponse!
+  AddSurvey(belong: String!, purpose: [String]!, servicePoint: Int!, mealsPoint: Int!, facility: Int!, reuse: Int!, etc: String!): AddSurveyResponse!
+  RemoveSurvey(id: ID!): RemoveSurveyResponse!
   AddTip(title: String!, body: String!): AddTipResponse!
   RemoveTip(id: ID!): RemoveTipResponse!
   UpdateTip(id: ID!, title: String, body: String): UpdateTipResponse!
@@ -55,6 +57,8 @@ type Query {
   ReadWeddingEvent(id: ID!): ReadWeddingEventResponse!
   ListReserves(page: Int, confirm: Boolean, name: String, phone: String, email: String): ListReservesResponse!
   ReadReserve(id: ID!): ReadReserveResponse!
+  ListSurvey(page: Int): ListSurveyResponse!
+  ReadSurvey(id: ID!): ReadSurveyResponse!
   ListTips(page: Int, title: String): ListTipsResponse!
   ReadTip(id: ID!): ReadTipResponse!
 }
@@ -239,7 +243,7 @@ type Reserve {
 }
 
 type Banquet {
-  id: String!
+  id: ID!
   title: String!
   startTime: String!
   endTime: String!
@@ -249,7 +253,7 @@ type Banquet {
 }
 
 type Ask {
-  id: String!
+  id: ID!
   native: String!
   name: String!
   phone: String!
@@ -259,6 +263,41 @@ type Ask {
   num: Int!
   body: String!
   created_at: Date!
+}
+
+type Survey {
+  id: ID!
+  belong: String!
+  purpose: [String]!
+  servicePoint: Int!
+  mealsPoint: Int!
+  facility: Int!
+  reuse: Int!
+  etc: String!
+  created_at: Date!
+}
+
+type AddSurveyResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ListSurveyResponse {
+  ok: Boolean!
+  error: String
+  survey: [Survey]
+  lastPage: Int!
+}
+
+type ReadSurveyResponse {
+  ok: Boolean!
+  error: String
+  survey: Survey
+}
+
+type RemoveSurveyResponse {
+  ok: Boolean!
+  error: String
 }
 
 type AddTipResponse {

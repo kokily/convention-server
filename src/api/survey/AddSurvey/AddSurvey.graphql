@@ -1,0 +1,16 @@
+type AddSurveyResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddSurvey(
+    belong: String!
+    purpose: [String]!
+    servicePoint: Int!
+    mealsPoint: Int!
+    facility: Int!
+    reuse: Int!
+    etc: String!
+  ): AddSurveyResponse!
+}
