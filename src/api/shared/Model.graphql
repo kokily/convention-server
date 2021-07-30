@@ -76,3 +76,16 @@ type Banquet {
   eventDate: String!
   created_at: Date!
 }
+
+type Ask {
+  id: String!
+  native: String!
+  name: String!
+  phone: String!
+  email: String!
+  reserveDate: String!
+  reserveTime: String!
+  num: Int!
+  body: String!
+  created_at: Date!
+}

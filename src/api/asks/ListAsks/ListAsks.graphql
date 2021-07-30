@@ -1,0 +1,13 @@
+type ListAsksResponse {
+  ok: Boolean!
+  error: String
+  asks: [Ask]
+  lastPage: Int!
+}
+
+type Query {
+  ListAsks(
+    page: Int
+    name: String
+  ): ListAsksResponse!
+}

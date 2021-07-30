@@ -1,0 +1,17 @@
+type AddAskResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddAsk(
+    native: String!
+    name: String!
+    phone: String!
+    email: String!
+    reserveDate: String!
+    reserveTime: String!
+    num: Int!
+    body: String!
+  ): AddAskResponse!
+}
