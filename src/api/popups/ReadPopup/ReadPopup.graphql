@@ -1,0 +1,11 @@
+type ReadPopupResponse {
+  ok: Boolean!
+  error: String
+  popup: Popup
+}
+
+type Query {
+  ReadPopup(
+    id: ID!
+  ): ReadPopupResponse!
+}

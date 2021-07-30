@@ -1,4 +1,4 @@
-export const typeDefs = ["type CreateAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateAdmin(password: String!): CreateAdminResponse!\n  LoginAdmin(password: String!): LoginAdminResponse!\n  LogoutAdmin: LogoutAdminResponse!\n  AddAsk(native: String!, name: String!, phone: String!, email: String!, reserveDate: String!, reserveTime: String!, num: Int!, body: String!): AddAskResponse!\n  RemoveAsk(id: ID!): RemoveAskResponse!\n  AddBanner(title: String!, order: Int!, isUse: Boolean!, image: String!): AddBannerResponse!\n  RemoveBanner(id: ID!): RemoveBannerResponse!\n  UpdateBanner(id: ID!, title: String, order: Int, isUse: Boolean, image: String): UpdateBannerResponse!\n  AddBanquet(title: String!, startTime: String!, endTime: String!, num: Int!, eventDate: String!): AddBanquetResponse!\n  RemoveBanquet(id: ID!): RemoveBanquetResponse!\n  UpdateBanquet(id: ID!, title: String, startTime: String, endTime: String, num: String, eventDate: String): UpdateBanquetResponse!\n  AddWeddingEvent(title: String!, body: String!, info: String, thumbnail: String): AddWeddingEventResponse!\n  RemoveWeddingEvent(id: ID!): RemoveWeddingEventResponse!\n  UpdateWeddingEvent(id: ID!, title: String, body: String, info: String, thumbnail: String): UpdateWeddingEventResponse!\n  AddReserve(husbandName: String!, husbandNative: String!, husbandPhone: String!, husbandEmail: String, brideName: String!, brideNative: String!, bridePhone: String!, brideEmail: String, firstWeddingDate: String!, firstWeddingTime: String!, secondWeddingDate: String, secondWeddingTime: String, etcAsk: String): AddReserveResponse!\n  CancelReserve(id: ID!): CancelReserveResponse!\n  ConfirmReserve(id: ID!, confirmDate: String!, confirmTime: String!): ConfirmReserveResponse!\n  RemoveReserve(id: ID!): RemoveReserveResponse!\n  AddSurvey(native: String!, belong: String!, purpose: [String]!, servicePoint: Int!, mealsPoint: Int!, facility: Int!, reuse: Int!, etc: String): AddSurveyResponse!\n  RemoveSurvey(id: ID!): RemoveSurveyResponse!\n  AddTip(title: String!, body: String!): AddTipResponse!\n  RemoveTip(id: ID!): RemoveTipResponse!\n  UpdateTip(id: ID!, title: String, body: String): UpdateTipResponse!\n}\n\ntype LoginAdminResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype LogoutAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Me {\n  adminId: String\n}\n\ntype MeResponse {\n  ok: Boolean!\n  error: String\n  me: Me\n}\n\ntype Query {\n  Me: MeResponse!\n  ListAsks(page: Int, name: String): ListAsksResponse!\n  ReadAsk(id: ID!): ReadAskResponse!\n  ListBanners(cursor: ID): ListBannersResponse!\n  ReadBanner(id: ID!): ReadBannerResponse!\n  ListBanquet(date: String!): ListBanquetResponse!\n  ReadBanquet(id: ID!): ReadBanquetResponse!\n  ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!\n  ReadWeddingEvent(id: ID!): ReadWeddingEventResponse!\n  ListReserves(page: Int, confirm: Boolean, name: String, phone: String, email: String): ListReservesResponse!\n  ReadReserve(id: ID!): ReadReserveResponse!\n  ListSurvey(page: Int): ListSurveyResponse!\n  ReadSurvey(id: ID!): ReadSurveyResponse!\n  ResultSurvey(startDate: Date!, endDate: Date!): ResultSurveyResponse!\n  ListTips(page: Int, title: String): ListTipsResponse!\n  ReadTip(id: ID!): ReadTipResponse!\n}\n\ntype AddAskResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListAsksResponse {\n  ok: Boolean!\n  error: String\n  asks: [Ask]\n  lastPage: Int!\n}\n\ntype ReadAskResponse {\n  ok: Boolean!\n  error: String\n  ask: Ask\n}\n\ntype RemoveAskResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddBannerResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListBannersResponse {\n  ok: Boolean!\n  error: String\n  banners: [Banner]\n}\n\ntype ReadBannerResponse {\n  ok: Boolean!\n  error: String\n  banner: Banner\n}\n\ntype RemoveBannerResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateBannerResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddBanquetResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListBanquetResponse {\n  ok: Boolean!\n  error: String\n  banquets: [Banquet]\n}\n\ntype ReadBanquetResponse {\n  ok: Boolean!\n  error: String\n  banquet: Banquet\n}\n\ntype RemoveBanquetResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateBanquetResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddWeddingEventResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListWeddingEventsResponse {\n  ok: Boolean!\n  error: String\n  weddingEvents: [WeddingEvent]\n}\n\ntype ReadWeddingEventResponse {\n  ok: Boolean!\n  error: String\n  weddingEvent: WeddingEvent\n}\n\ntype RemoveWeddingEventResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateWeddingEventResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype CancelReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ConfirmReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListReservesResponse {\n  ok: Boolean!\n  error: String\n  reserves: [Reserve]\n  lastPage: Int!\n}\n\ntype ReadReserveResponse {\n  ok: Boolean!\n  error: String\n  reserve: Reserve\n}\n\ntype RemoveReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\nscalar Date\n\ntype Admin {\n  id: ID!\n  username: String!\n  password: String!\n  businessName: String\n  businessNumber: String\n  leader: String\n  email: String\n  privacyNeed: String\n  address: String\n  telephone: String\n  fax: String\n  facebook: String\n  instagram: String\n  youtube: String\n  twitter: String\n  blog: String\n}\n\ntype Seo {\n  id: ID!\n  title: String\n  description: String\n  keywords: String\n  headTag: String\n  bodyTag: String\n}\n\ntype Tip {\n  id: ID!\n  title: String!\n  body: String!\n  created_at: Date!\n  updated_at: Date\n}\n\ntype WeddingEvent {\n  id: ID!\n  title: String!\n  body: String!\n  info: String\n  thumbnail: String\n  created_at: Date!\n  updated_at: Date\n}\n\ntype Reserve {\n  id: ID!\n  husbandName: String!\n  husbandNative: String!\n  husbandPhone: String!\n  husbandEmail: String\n  brideName: String!\n  brideNative: String!\n  bridePhone: String!\n  brideEmail: String\n  firstWeddingDate: String!\n  firstWeddingTime: String!\n  secondWeddingDate: String\n  secondWeddingTime: String\n  etcAsk: String\n  isConfirm: Boolean!\n  confirmDate: String\n  confirmTime: String\n  created_at: Date!\n}\n\ntype Banquet {\n  id: ID!\n  title: String!\n  startTime: String!\n  endTime: String!\n  num: Int!\n  eventDate: String!\n  created_at: Date!\n}\n\ntype Ask {\n  id: ID!\n  native: String!\n  name: String!\n  phone: String!\n  email: String!\n  reserveDate: String!\n  reserveTime: String!\n  num: Int!\n  body: String!\n  created_at: Date!\n}\n\ntype Survey {\n  id: ID!\n  native: String!\n  belong: String!\n  purpose: [String]!\n  servicePoint: Int!\n  mealsPoint: Int!\n  facility: Int!\n  reuse: Int!\n  etc: String\n  created_at: Date!\n}\n\ntype Native {\n  soldier: Int!\n  reserve: Int!\n  official: Int!\n  public: Int!\n  general: Int!\n}\n\ntype Belong {\n  army: Int!\n  air: Int!\n  navy: Int!\n  marine: Int!\n  national: Int!\n}\n\ntype Purpose {\n  guest: Int!\n  small: Int!\n  big: Int!\n  seminar: Int!\n  etc: Int!\n}\n\ntype Point {\n  veryGood: Int!\n  good: Int!\n  normal: Int!\n  bad: Int!\n  veryBad: Int!\n}\n\ntype SubPoint {\n  good: Int!\n  normal: Int!\n  bad: Int!\n}\n\ntype Result {\n  native: Native!\n  belong: Belong!\n  purpose: Purpose!\n  servicePoint: Point!\n  mealsPoint: Point!\n  facility: Point!\n  reuse: SubPoint!\n}\n\ntype Banner {\n  id: ID!\n  title: String!\n  order: Int!\n  isUse: Boolean!\n  image: String!\n  created_at: Date!\n}\n\ntype AddSurveyResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListSurveyResponse {\n  ok: Boolean!\n  error: String\n  survey: [Survey]\n  lastPage: Int!\n}\n\ntype ReadSurveyResponse {\n  ok: Boolean!\n  error: String\n  survey: Survey\n}\n\ntype RemoveSurveyResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ResultSurveyResponse {\n  ok: Boolean!\n  error: String\n  result: Result\n  num: Int!\n}\n\ntype AddTipResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListTipsResponse {\n  ok: Boolean!\n  error: String\n  tips: [Tip]\n  lastPage: Int!\n}\n\ntype ReadTipResponse {\n  ok: Boolean!\n  error: String\n  tip: Tip\n}\n\ntype RemoveTipResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateTipResponse {\n  ok: Boolean!\n  error: String\n}\n"];
+export const typeDefs = ["type CreateAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateAdmin(password: String!): CreateAdminResponse!\n  LoginAdmin(password: String!): LoginAdminResponse!\n  LogoutAdmin: LogoutAdminResponse!\n  AddAsk(native: String!, name: String!, phone: String!, email: String!, reserveDate: String!, reserveTime: String!, num: Int!, body: String!): AddAskResponse!\n  RemoveAsk(id: ID!): RemoveAskResponse!\n  AddBanner(title: String!, order: Int!, isUse: Boolean!, image: String!): AddBannerResponse!\n  RemoveBanner(id: ID!): RemoveBannerResponse!\n  UpdateBanner(id: ID!, title: String, order: Int, isUse: Boolean, image: String): UpdateBannerResponse!\n  AddBanquet(title: String!, startTime: String!, endTime: String!, num: Int!, eventDate: String!): AddBanquetResponse!\n  RemoveBanquet(id: ID!): RemoveBanquetResponse!\n  UpdateBanquet(id: ID!, title: String, startTime: String, endTime: String, num: String, eventDate: String): UpdateBanquetResponse!\n  AddWeddingEvent(title: String!, body: String!, info: String, thumbnail: String): AddWeddingEventResponse!\n  RemoveWeddingEvent(id: ID!): RemoveWeddingEventResponse!\n  UpdateWeddingEvent(id: ID!, title: String, body: String, info: String, thumbnail: String): UpdateWeddingEventResponse!\n  AddPopup(title: String!, image: String!, startDate: Date!, endDate: Date!, sizeX: Int!, sizeY: Int!, whereTop: Int!, whereLeft: Int!, isUse: Boolean!): AddPopupResponse!\n  RemovePopup(id: ID!): RemovePopupResponse!\n  UpdatePopup(id: ID!, title: String, image: String, startDate: Date, endDate: Date, sizeX: Int, sizeY: Int, whereTop: Int, whereLeft: Int, isUse: Boolean): UpdatePopupResponse!\n  AddReserve(husbandName: String!, husbandNative: String!, husbandPhone: String!, husbandEmail: String, brideName: String!, brideNative: String!, bridePhone: String!, brideEmail: String, firstWeddingDate: String!, firstWeddingTime: String!, secondWeddingDate: String, secondWeddingTime: String, etcAsk: String): AddReserveResponse!\n  CancelReserve(id: ID!): CancelReserveResponse!\n  ConfirmReserve(id: ID!, confirmDate: String!, confirmTime: String!): ConfirmReserveResponse!\n  RemoveReserve(id: ID!): RemoveReserveResponse!\n  AddSurvey(native: String!, belong: String!, purpose: [String]!, servicePoint: Int!, mealsPoint: Int!, facility: Int!, reuse: Int!, etc: String): AddSurveyResponse!\n  RemoveSurvey(id: ID!): RemoveSurveyResponse!\n  AddTip(title: String!, body: String!): AddTipResponse!\n  RemoveTip(id: ID!): RemoveTipResponse!\n  UpdateTip(id: ID!, title: String, body: String): UpdateTipResponse!\n}\n\ntype LoginAdminResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype LogoutAdminResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Me {\n  adminId: String\n}\n\ntype MeResponse {\n  ok: Boolean!\n  error: String\n  me: Me\n}\n\ntype Query {\n  Me: MeResponse!\n  ListAsks(page: Int, name: String): ListAsksResponse!\n  ReadAsk(id: ID!): ReadAskResponse!\n  ListBanners(cursor: ID): ListBannersResponse!\n  ReadBanner(id: ID!): ReadBannerResponse!\n  ListBanquet(date: String!): ListBanquetResponse!\n  ReadBanquet(id: ID!): ReadBanquetResponse!\n  ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!\n  ReadWeddingEvent(id: ID!): ReadWeddingEventResponse!\n  ListPopups(isUse: Boolean): ListPopupsResponse!\n  ReadPopup(id: ID!): ReadPopupResponse!\n  ListReserves(page: Int, confirm: Boolean, name: String, phone: String, email: String): ListReservesResponse!\n  ReadReserve(id: ID!): ReadReserveResponse!\n  ListSurvey(page: Int): ListSurveyResponse!\n  ReadSurvey(id: ID!): ReadSurveyResponse!\n  ResultSurvey(startDate: Date!, endDate: Date!): ResultSurveyResponse!\n  ListTips(page: Int, title: String): ListTipsResponse!\n  ReadTip(id: ID!): ReadTipResponse!\n}\n\ntype AddAskResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListAsksResponse {\n  ok: Boolean!\n  error: String\n  asks: [Ask]\n  lastPage: Int!\n}\n\ntype ReadAskResponse {\n  ok: Boolean!\n  error: String\n  ask: Ask\n}\n\ntype RemoveAskResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddBannerResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListBannersResponse {\n  ok: Boolean!\n  error: String\n  banners: [Banner]\n}\n\ntype ReadBannerResponse {\n  ok: Boolean!\n  error: String\n  banner: Banner\n}\n\ntype RemoveBannerResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateBannerResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddBanquetResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListBanquetResponse {\n  ok: Boolean!\n  error: String\n  banquets: [Banquet]\n}\n\ntype ReadBanquetResponse {\n  ok: Boolean!\n  error: String\n  banquet: Banquet\n}\n\ntype RemoveBanquetResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateBanquetResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddWeddingEventResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListWeddingEventsResponse {\n  ok: Boolean!\n  error: String\n  weddingEvents: [WeddingEvent]\n}\n\ntype ReadWeddingEventResponse {\n  ok: Boolean!\n  error: String\n  weddingEvent: WeddingEvent\n}\n\ntype RemoveWeddingEventResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateWeddingEventResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddPopupResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListPopupsResponse {\n  ok: Boolean!\n  error: String\n  popups: [Popup]\n}\n\ntype ReadPopupResponse {\n  ok: Boolean!\n  error: String\n  popup: Popup\n}\n\ntype RemovePopupResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdatePopupResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype AddReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype CancelReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ConfirmReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListReservesResponse {\n  ok: Boolean!\n  error: String\n  reserves: [Reserve]\n  lastPage: Int!\n}\n\ntype ReadReserveResponse {\n  ok: Boolean!\n  error: String\n  reserve: Reserve\n}\n\ntype RemoveReserveResponse {\n  ok: Boolean!\n  error: String\n}\n\nscalar Date\n\ntype Admin {\n  id: ID!\n  username: String!\n  password: String!\n  businessName: String\n  businessNumber: String\n  leader: String\n  email: String\n  privacyNeed: String\n  address: String\n  telephone: String\n  fax: String\n  facebook: String\n  instagram: String\n  youtube: String\n  twitter: String\n  blog: String\n}\n\ntype Seo {\n  id: ID!\n  title: String\n  description: String\n  keywords: String\n  headTag: String\n  bodyTag: String\n}\n\ntype Tip {\n  id: ID!\n  title: String!\n  body: String!\n  created_at: Date!\n  updated_at: Date\n}\n\ntype WeddingEvent {\n  id: ID!\n  title: String!\n  body: String!\n  info: String\n  thumbnail: String\n  created_at: Date!\n  updated_at: Date\n}\n\ntype Reserve {\n  id: ID!\n  husbandName: String!\n  husbandNative: String!\n  husbandPhone: String!\n  husbandEmail: String\n  brideName: String!\n  brideNative: String!\n  bridePhone: String!\n  brideEmail: String\n  firstWeddingDate: String!\n  firstWeddingTime: String!\n  secondWeddingDate: String\n  secondWeddingTime: String\n  etcAsk: String\n  isConfirm: Boolean!\n  confirmDate: String\n  confirmTime: String\n  created_at: Date!\n}\n\ntype Banquet {\n  id: ID!\n  title: String!\n  startTime: String!\n  endTime: String!\n  num: Int!\n  eventDate: String!\n  created_at: Date!\n}\n\ntype Ask {\n  id: ID!\n  native: String!\n  name: String!\n  phone: String!\n  email: String!\n  reserveDate: String!\n  reserveTime: String!\n  num: Int!\n  body: String!\n  created_at: Date!\n}\n\ntype Survey {\n  id: ID!\n  native: String!\n  belong: String!\n  purpose: [String]!\n  servicePoint: Int!\n  mealsPoint: Int!\n  facility: Int!\n  reuse: Int!\n  etc: String\n  created_at: Date!\n}\n\ntype Native {\n  soldier: Int!\n  reserve: Int!\n  official: Int!\n  public: Int!\n  general: Int!\n}\n\ntype Belong {\n  army: Int!\n  air: Int!\n  navy: Int!\n  marine: Int!\n  national: Int!\n}\n\ntype Purpose {\n  guest: Int!\n  small: Int!\n  big: Int!\n  seminar: Int!\n  etc: Int!\n}\n\ntype Point {\n  veryGood: Int!\n  good: Int!\n  normal: Int!\n  bad: Int!\n  veryBad: Int!\n}\n\ntype SubPoint {\n  good: Int!\n  normal: Int!\n  bad: Int!\n}\n\ntype Result {\n  native: Native!\n  belong: Belong!\n  purpose: Purpose!\n  servicePoint: Point!\n  mealsPoint: Point!\n  facility: Point!\n  reuse: SubPoint!\n}\n\ntype Banner {\n  id: ID!\n  title: String!\n  order: Int!\n  isUse: Boolean!\n  image: String!\n  created_at: Date!\n}\n\ntype Popup {\n  id: ID!\n  title: String!\n  image: String!\n  startDate: Date!\n  endDate: Date!\n  sizeX: Int!\n  sizeY: Int!\n  whereTop: Int!\n  whereLeft: Int!\n  isUse: Boolean!\n  created_at: Date!\n}\n\ntype AddSurveyResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListSurveyResponse {\n  ok: Boolean!\n  error: String\n  survey: [Survey]\n  lastPage: Int!\n}\n\ntype ReadSurveyResponse {\n  ok: Boolean!\n  error: String\n  survey: Survey\n}\n\ntype RemoveSurveyResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ResultSurveyResponse {\n  ok: Boolean!\n  error: String\n  result: Result\n  num: Int!\n}\n\ntype AddTipResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype ListTipsResponse {\n  ok: Boolean!\n  error: String\n  tips: [Tip]\n  lastPage: Int!\n}\n\ntype ReadTipResponse {\n  ok: Boolean!\n  error: String\n  tip: Tip\n}\n\ntype RemoveTipResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateTipResponse {\n  ok: Boolean!\n  error: String\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -11,6 +11,8 @@ export interface Query {
   ReadBanquet: ReadBanquetResponse;
   ListWeddingEvents: ListWeddingEventsResponse;
   ReadWeddingEvent: ReadWeddingEventResponse;
+  ListPopups: ListPopupsResponse;
+  ReadPopup: ReadPopupResponse;
   ListReserves: ListReservesResponse;
   ReadReserve: ReadReserveResponse;
   ListSurvey: ListSurveyResponse;
@@ -52,6 +54,14 @@ export interface ListWeddingEventsQueryArgs {
 }
 
 export interface ReadWeddingEventQueryArgs {
+  id: string;
+}
+
+export interface ListPopupsQueryArgs {
+  isUse: boolean | null;
+}
+
+export interface ReadPopupQueryArgs {
   id: string;
 }
 
@@ -190,6 +200,32 @@ export interface ReadWeddingEventResponse {
   ok: boolean;
   error: string | null;
   weddingEvent: WeddingEvent | null;
+}
+
+export interface ListPopupsResponse {
+  ok: boolean;
+  error: string | null;
+  popups: Array<Popup> | null;
+}
+
+export interface Popup {
+  id: string;
+  title: string;
+  image: string;
+  startDate: Date;
+  endDate: Date;
+  sizeX: number;
+  sizeY: number;
+  whereTop: number;
+  whereLeft: number;
+  isUse: boolean;
+  created_at: Date;
+}
+
+export interface ReadPopupResponse {
+  ok: boolean;
+  error: string | null;
+  popup: Popup | null;
 }
 
 export interface ListReservesResponse {
@@ -343,6 +379,9 @@ export interface Mutation {
   AddWeddingEvent: AddWeddingEventResponse;
   RemoveWeddingEvent: RemoveWeddingEventResponse;
   UpdateWeddingEvent: UpdateWeddingEventResponse;
+  AddPopup: AddPopupResponse;
+  RemovePopup: RemovePopupResponse;
+  UpdatePopup: UpdatePopupResponse;
   AddReserve: AddReserveResponse;
   CancelReserve: CancelReserveResponse;
   ConfirmReserve: ConfirmReserveResponse;
@@ -434,6 +473,35 @@ export interface UpdateWeddingEventMutationArgs {
   body: string | null;
   info: string | null;
   thumbnail: string | null;
+}
+
+export interface AddPopupMutationArgs {
+  title: string;
+  image: string;
+  startDate: Date;
+  endDate: Date;
+  sizeX: number;
+  sizeY: number;
+  whereTop: number;
+  whereLeft: number;
+  isUse: boolean;
+}
+
+export interface RemovePopupMutationArgs {
+  id: string;
+}
+
+export interface UpdatePopupMutationArgs {
+  id: string;
+  title: string | null;
+  image: string | null;
+  startDate: Date | null;
+  endDate: Date | null;
+  sizeX: number | null;
+  sizeY: number | null;
+  whereTop: number | null;
+  whereLeft: number | null;
+  isUse: boolean | null;
 }
 
 export interface AddReserveMutationArgs {
@@ -563,6 +631,21 @@ export interface RemoveWeddingEventResponse {
 }
 
 export interface UpdateWeddingEventResponse {
+  ok: boolean;
+  error: string | null;
+}
+
+export interface AddPopupResponse {
+  ok: boolean;
+  error: string | null;
+}
+
+export interface RemovePopupResponse {
+  ok: boolean;
+  error: string | null;
+}
+
+export interface UpdatePopupResponse {
   ok: boolean;
   error: string | null;
 }

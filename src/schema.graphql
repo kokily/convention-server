@@ -18,6 +18,9 @@ type Mutation {
   AddWeddingEvent(title: String!, body: String!, info: String, thumbnail: String): AddWeddingEventResponse!
   RemoveWeddingEvent(id: ID!): RemoveWeddingEventResponse!
   UpdateWeddingEvent(id: ID!, title: String, body: String, info: String, thumbnail: String): UpdateWeddingEventResponse!
+  AddPopup(title: String!, image: String!, startDate: Date!, endDate: Date!, sizeX: Int!, sizeY: Int!, whereTop: Int!, whereLeft: Int!, isUse: Boolean!): AddPopupResponse!
+  RemovePopup(id: ID!): RemovePopupResponse!
+  UpdatePopup(id: ID!, title: String, image: String, startDate: Date, endDate: Date, sizeX: Int, sizeY: Int, whereTop: Int, whereLeft: Int, isUse: Boolean): UpdatePopupResponse!
   AddReserve(husbandName: String!, husbandNative: String!, husbandPhone: String!, husbandEmail: String, brideName: String!, brideNative: String!, bridePhone: String!, brideEmail: String, firstWeddingDate: String!, firstWeddingTime: String!, secondWeddingDate: String, secondWeddingTime: String, etcAsk: String): AddReserveResponse!
   CancelReserve(id: ID!): CancelReserveResponse!
   ConfirmReserve(id: ID!, confirmDate: String!, confirmTime: String!): ConfirmReserveResponse!
@@ -60,6 +63,8 @@ type Query {
   ReadBanquet(id: ID!): ReadBanquetResponse!
   ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!
   ReadWeddingEvent(id: ID!): ReadWeddingEventResponse!
+  ListPopups(isUse: Boolean): ListPopupsResponse!
+  ReadPopup(id: ID!): ReadPopupResponse!
   ListReserves(page: Int, confirm: Boolean, name: String, phone: String, email: String): ListReservesResponse!
   ReadReserve(id: ID!): ReadReserveResponse!
   ListSurvey(page: Int): ListSurveyResponse!
@@ -169,6 +174,33 @@ type RemoveWeddingEventResponse {
 }
 
 type UpdateWeddingEventResponse {
+  ok: Boolean!
+  error: String
+}
+
+type AddPopupResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ListPopupsResponse {
+  ok: Boolean!
+  error: String
+  popups: [Popup]
+}
+
+type ReadPopupResponse {
+  ok: Boolean!
+  error: String
+  popup: Popup
+}
+
+type RemovePopupResponse {
+  ok: Boolean!
+  error: String
+}
+
+type UpdatePopupResponse {
   ok: Boolean!
   error: String
 }
@@ -365,6 +397,20 @@ type Banner {
   order: Int!
   isUse: Boolean!
   image: String!
+  created_at: Date!
+}
+
+type Popup {
+  id: ID!
+  title: String!
+  image: String!
+  startDate: Date!
+  endDate: Date!
+  sizeX: Int!
+  sizeY: Int!
+  whereTop: Int!
+  whereLeft: Int!
+  isUse: Boolean!
   created_at: Date!
 }
 

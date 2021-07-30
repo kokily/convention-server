@@ -7,6 +7,7 @@ import { Banquet } from './Banquet';
 import { Ask } from './Ask';
 import { Survey } from './Survey';
 import { Banner } from './Banner';
+import { Popup } from './Popup';
 
 const entities = [
   Admin,
@@ -18,6 +19,7 @@ const entities = [
   Ask,
   Survey,
   Banner,
+  Popup,
 ];
 
 export default entities;

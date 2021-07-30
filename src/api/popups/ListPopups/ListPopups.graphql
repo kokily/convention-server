@@ -1,0 +1,11 @@
+type ListPopupsResponse {
+  ok: Boolean!
+  error: String
+  popups: [Popup]
+}
+
+type Query {
+  ListPopups(
+    isUse: Boolean
+  ): ListPopupsResponse!
+}

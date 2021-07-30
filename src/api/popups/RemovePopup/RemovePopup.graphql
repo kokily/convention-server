@@ -1,0 +1,10 @@
+type RemovePopupResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RemovePopup(
+    id: ID!
+  ): RemovePopupResponse!
+}

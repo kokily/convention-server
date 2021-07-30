@@ -159,3 +159,17 @@ type Banner {
   image: String!
   created_at: Date!
 }
+
+type Popup {
+  id: ID!
+  title: String!
+  image: String!
+  startDate: Date!
+  endDate: Date!
+  sizeX: Int!
+  sizeY: Int!
+  whereTop: Int!
+  whereLeft: Int!
+  isUse: Boolean!
+  created_at: Date!
+}

@@ -1,0 +1,19 @@
+type UpdatePopupResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  UpdatePopup(
+    id: ID!
+    title: String
+    image: String
+    startDate: Date
+    endDate: Date
+    sizeX: Int
+    sizeY: Int
+    whereTop: Int
+    whereLeft: Int
+    isUse: Boolean
+  ): UpdatePopupResponse!
+}
