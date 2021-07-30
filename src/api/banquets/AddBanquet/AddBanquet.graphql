@@ -1,0 +1,14 @@
+type AddBanquetResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddBanquet(
+    title: String!
+    startTime: String!
+    endTime: String!
+    num: Int!
+    eventDate: String!
+  ): AddBanquetResponse!
+}

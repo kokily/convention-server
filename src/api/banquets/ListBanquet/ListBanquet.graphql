@@ -1,0 +1,11 @@
+type ListBanquetResponse {
+  ok: Boolean!
+  error: String
+  banquets: [Banquet]
+}
+
+type Query {
+  ListBanquet(
+    date: String!
+  ): ListBanquetResponse!
+}

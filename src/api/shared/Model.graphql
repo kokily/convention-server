@@ -66,3 +66,13 @@ type Reserve {
   confirmTime: String
   created_at: Date!
 }
+
+type Banquet {
+  id: String!
+  title: String!
+  startTime: String!
+  endTime: String!
+  num: Int!
+  eventDate: String!
+  created_at: Date!
+}
