@@ -1,0 +1,13 @@
+type ResultSurveyResponse {
+  ok: Boolean!
+  error: String
+  result: Result
+  num: Int!
+}
+
+type Query {
+  ResultSurvey(
+    startDate: Date!
+    endDate: Date!
+  ): ResultSurveyResponse!
+}

@@ -92,12 +92,61 @@ type Ask {
 
 type Survey {
   id: ID!
+  native: String!
   belong: String!
   purpose: [String]!
   servicePoint: Int!
   mealsPoint: Int!
   facility: Int!
   reuse: Int!
-  etc: String!
+  etc: String
   created_at: Date!
+}
+
+type Native {
+  soldier: Int!
+  reserve: Int!
+  official: Int!
+  public: Int!
+  general: Int!
+}
+
+type Belong {
+  army: Int!
+  air: Int!
+  navy: Int!
+  marine: Int!
+  national: Int!
+}
+
+type Purpose {
+  guest: Int!
+  small: Int!
+  big: Int!
+  seminar: Int!
+  etc: Int!
+}
+
+type Point {
+  veryGood: Int!
+  good: Int!
+  normal: Int!
+  bad: Int!
+  veryBad: Int!
+}
+
+type SubPoint {
+  good: Int!
+  normal: Int!
+  bad: Int!
+}
+
+type Result {
+  native: Native!
+  belong: Belong!
+  purpose: Purpose!
+  servicePoint: Point!
+  mealsPoint: Point!
+  facility: Point!
+  reuse: SubPoint!
 }

@@ -19,7 +19,7 @@ type Mutation {
   CancelReserve(id: ID!): CancelReserveResponse!
   ConfirmReserve(id: ID!, confirmDate: String!, confirmTime: String!): ConfirmReserveResponse!
   RemoveReserve(id: ID!): RemoveReserveResponse!
-  AddSurvey(belong: String!, purpose: [String]!, servicePoint: Int!, mealsPoint: Int!, facility: Int!, reuse: Int!, etc: String!): AddSurveyResponse!
+  AddSurvey(native: String!, belong: String!, purpose: [String]!, servicePoint: Int!, mealsPoint: Int!, facility: Int!, reuse: Int!, etc: String): AddSurveyResponse!
   RemoveSurvey(id: ID!): RemoveSurveyResponse!
   AddTip(title: String!, body: String!): AddTipResponse!
   RemoveTip(id: ID!): RemoveTipResponse!
@@ -59,6 +59,7 @@ type Query {
   ReadReserve(id: ID!): ReadReserveResponse!
   ListSurvey(page: Int): ListSurveyResponse!
   ReadSurvey(id: ID!): ReadSurveyResponse!
+  ResultSurvey(startDate: Date!, endDate: Date!): ResultSurveyResponse!
   ListTips(page: Int, title: String): ListTipsResponse!
   ReadTip(id: ID!): ReadTipResponse!
 }
@@ -267,14 +268,63 @@ type Ask {
 
 type Survey {
   id: ID!
+  native: String!
   belong: String!
   purpose: [String]!
   servicePoint: Int!
   mealsPoint: Int!
   facility: Int!
   reuse: Int!
-  etc: String!
+  etc: String
   created_at: Date!
+}
+
+type Native {
+  soldier: Int!
+  reserve: Int!
+  official: Int!
+  public: Int!
+  general: Int!
+}
+
+type Belong {
+  army: Int!
+  air: Int!
+  navy: Int!
+  marine: Int!
+  national: Int!
+}
+
+type Purpose {
+  guest: Int!
+  small: Int!
+  big: Int!
+  seminar: Int!
+  etc: Int!
+}
+
+type Point {
+  veryGood: Int!
+  good: Int!
+  normal: Int!
+  bad: Int!
+  veryBad: Int!
+}
+
+type SubPoint {
+  good: Int!
+  normal: Int!
+  bad: Int!
+}
+
+type Result {
+  native: Native!
+  belong: Belong!
+  purpose: Purpose!
+  servicePoint: Point!
+  mealsPoint: Point!
+  facility: Point!
+  reuse: SubPoint!
 }
 
 type AddSurveyResponse {
@@ -298,6 +348,13 @@ type ReadSurveyResponse {
 type RemoveSurveyResponse {
   ok: Boolean!
   error: String
+}
+
+type ResultSurveyResponse {
+  ok: Boolean!
+  error: String
+  result: Result
+  num: Int!
 }
 
 type AddTipResponse {

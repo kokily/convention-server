@@ -5,12 +5,13 @@ type AddSurveyResponse {
 
 type Mutation {
   AddSurvey(
+    native: String!
     belong: String!
     purpose: [String]!
     servicePoint: Int!
     mealsPoint: Int!
     facility: Int!
     reuse: Int!
-    etc: String!
+    etc: String
   ): AddSurveyResponse!
 }

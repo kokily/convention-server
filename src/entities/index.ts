@@ -5,7 +5,8 @@ import { WeddingEvent } from './WeddingEvent';
 import { Reserve } from './Reserve';
 import { Banquet } from './Banquet';
 import { Ask } from './Ask';
+import { Survey } from './Survey';
 
-const entities = [Admin, Seo, Tip, WeddingEvent, Reserve, Banquet, Ask];
+const entities = [Admin, Seo, Tip, WeddingEvent, Reserve, Banquet, Ask, Survey];
 
 export default entities;

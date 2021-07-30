@@ -17,7 +17,7 @@ export class Survey extends BaseEntity {
   @Column({ type: 'text' })
   belong!: string;
 
-  @Column({ type: 'array' })
+  @Column({ type: 'simple-array' })
   purpose!: string[];
 
   @Column()
@@ -32,8 +32,8 @@ export class Survey extends BaseEntity {
   @Column()
   reuse!: number;
 
-  @Column({ type: 'text' })
-  etc!: string;
+  @Column({ type: 'text', nullable: true })
+  etc!: string | null;
 
   @Column({ type: 'timestamptz' })
   @CreateDateColumn()
