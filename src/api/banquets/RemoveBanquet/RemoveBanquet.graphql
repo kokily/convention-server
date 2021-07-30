@@ -1,0 +1,10 @@
+type RemoveBanquetResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RemoveBanquet(
+    id: ID!
+  ): RemoveBanquetResponse!
+}

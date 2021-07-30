@@ -1,0 +1,11 @@
+type ReadBanquetResponse {
+  ok: Boolean!
+  error: String
+  banquet: Banquet
+}
+
+type Query {
+  ReadBanquet(
+    id: ID!
+  ): ReadBanquetResponse!
+}

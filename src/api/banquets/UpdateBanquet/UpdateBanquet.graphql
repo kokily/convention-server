@@ -1,0 +1,15 @@
+type UpdateBanquetResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  UpdateBanquet(
+    id: ID!
+    title: String
+    startTime: String
+    endTime: String
+    num: String
+    eventDate: String
+  ): UpdateBanquetResponse!
+}

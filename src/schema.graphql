@@ -8,6 +8,8 @@ type Mutation {
   LoginAdmin(password: String!): LoginAdminResponse!
   LogoutAdmin: LogoutAdminResponse!
   AddBanquet(title: String!, startTime: String!, endTime: String!, num: Int!, eventDate: String!): AddBanquetResponse!
+  RemoveBanquet(id: ID!): RemoveBanquetResponse!
+  UpdateBanquet(id: ID!, title: String, startTime: String, endTime: String, num: String, eventDate: String): UpdateBanquetResponse!
   AddWeddingEvent(title: String!, body: String!, info: String, thumbnail: String): AddWeddingEventResponse!
   RemoveWeddingEvent(id: ID!): RemoveWeddingEventResponse!
   UpdateWeddingEvent(id: ID!, title: String, body: String, info: String, thumbnail: String): UpdateWeddingEventResponse!
@@ -44,6 +46,7 @@ type MeResponse {
 type Query {
   Me: MeResponse!
   ListBanquet(date: String!): ListBanquetResponse!
+  ReadBanquet(id: ID!): ReadBanquetResponse!
   ListWeddingEvents(cursor: ID, title: String, body: String): ListWeddingEventsResponse!
   ReadWeddingEvent(id: ID!): ReadWeddingEventResponse!
   ListReserves(page: Int, confirm: Boolean, name: String, phone: String, email: String): ListReservesResponse!
@@ -61,6 +64,22 @@ type ListBanquetResponse {
   ok: Boolean!
   error: String
   banquets: [Banquet]
+}
+
+type ReadBanquetResponse {
+  ok: Boolean!
+  error: String
+  banquet: Banquet
+}
+
+type RemoveBanquetResponse {
+  ok: Boolean!
+  error: String
+}
+
+type UpdateBanquetResponse {
+  ok: Boolean!
+  error: String
 }
 
 type AddWeddingEventResponse {
